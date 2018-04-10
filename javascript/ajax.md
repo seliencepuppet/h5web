@@ -1,0 +1,176 @@
+
+XMLHttpRequest 对象     Ajax的一个最大特点是无需刷新页面便可向服务器传输或读写数据，这一点得益于XMLHTTP 组件XMLHttpRequest
+如何创建XMLHttpRequest 对象     IE7.0 以下是以ActiveXObject 的方式引入XMLHttpRequest  对象的，创建方式如下：
+xmlHttpReq=new ActiveXObject("Microsoft.XMLHTTP");
+其它浏览器比如IE7.0+, Firefox，chrome等都支持原生的XMLHttpRequest对象，创建方式如下：xmlHttpReq=new XMLHttpRequest();
+XMLHttpRequest  对象     Ajax 的一个最大特点是无需刷新页面便可向服务器传输或读写数据，这一点得益于XMLHTTP组件XMLHttpRequest
+
+如何创建XMLHttpRequst对象
+var xmlHttp;           //  声明一个保存XMLhttpRequest对象function createXHR(){     if(window.ActiveXObject){          xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");     }else{          xmlHttp=new XMLHttpRequest(); //  IE7.0+ 浏览器     }}
+创建好XHR对象后准备启动一个请求
+xhr.open(method, url, asynchronous);
+method参数：设置请求类型，主要有get和posturl参数：请求地址，可以是相对地址，也可以是绝对地址asynchronous参数：默认true为异步，false为同步
+
+设置请求头信息
+不同的浏览器实际发送的头部信息会有所不同，但一些基本的请求头都会发送的，比如：Accept，Accept-Charset等，我们也可以设置自定义头信息发送给服务器端，方法如下：
+发送GET请求     GET请求则直接将输入的数据放入到异步请求的URL地址中，而send方法不发送任何数据。发送示例如下：
+var querystr="name=jack&age=30";
+var url="login.jsp?"+querystr+"&stamptime=" +new Date().getTime();xhr.open("GET", url);            // 准备请求方式xhr.send(null);                      //  发送请求
+
+发送POST请求     如果是POST请求则将数据统一在send() 方法当中发送，请求地址没有任何信息。     必须设置请求头信息历来设置以表单的形式来提交内容信息
+var  querystr= "name=jack&age=30";var  url="login.jsp?" + "&stamptime=" +new Date().getTime();xhr.open("POST",  url);         // 准备请求方式xhr.setRequestHeader(  "Content-Type",  "application/x-www-form-urlencoded"  );xhr.send(querystr);                 // 发送请求
+
+注册回调事件处理函数     当XMLHttpRequest 对象的readyState 属性值被改变时，会激发一个readystatechange事件，我们可以使用onreadystatechange属性来注册该回调事件处理函数。
+xhr.onreadystatechange=RequestCallBack;          //  设置回调函数
+readyState 属性值如下：0：未初始化。尚未调用open() 方法1：启动。 已经调用open() 方法2：发送。已经调用send()方法，但尚未接受到响应3：接受。已经接受到部分数据4：完成。已经接受到全部响应数据，而且已经可以在客户端使用了
+
+处理服务端响应的内容     在收到服务器端响应后，相应的额数据会自动填充到XHR对象的属性中，常用的属性如下：
+responseText               作为响应主体被返回的文本responseXML              如果服务端响应的内容类型是"text/xml"  或 "application/xml" 那就返回包含的xml内容， 否则返回为nullstatus                         响应HTTP状态，200代表响应成功statusText                   HTTP状态说明
+提示：当请求完成加载 readyState 值为4，并且响应已经成功 status 值为 200 时，就可以处理服务端的返回结果了。
+
+#### XMLHttpRequest 示例
+
+```html
+
+<script  type="text/javascript">
+
+var xmlHttp;
+
+function createXMLHttpRequest(){
+	if(window.ActiveXobject){
+		xmlHttp=new ActiveXObject("Microsoft.XMLHttp");
+	}else{
+		xmlHttp=new XMLHttpRequest();	
+	}
+}
+
+function createQueryString(){
+	var userName=document.getElementById("userName").value;
+	var userBirth=document.getElementById("userBirth").value;
+	var queryString="userName"+userName+"&userBirth"+userBirth;
+	return queryString;	
+}
+
+function handleStateChnage(){
+	if(xmlHttp.readyState==4){
+		if(xmlHttp.status==200){
+			var content=xmlHttp.responseText;
+			document.getElementById("content").innerHTML = content;	
+		}
+	}		
+}
+
+function startGet(){
+	createXMLHttpRequest();
+	var url="request.jsp?timestamp="+new Date().getTime();
+	xmlHttp.open("get", url+"&"+createQueryString());
+	xmlHttp.send(null);
+	xmlHttp.onreadystatechange=handleStateChange;
+}
+
+function startPost(){
+	createXMLhttpRequest();
+	var url="request.jsp?timestamp="+new Date().getTime();
+	xmlHttp.open("post", null);
+	xmlHttp.setRequestHeader("Content-Type", "application-/x-www-form-urlencoded");
+	xmlHttp.send(createQueryString());
+	xmlHttp.onreadystatechange=handleStateChange;				
+}
+
+</script>
+
+
+```
+
+#### $.get() 方法
+
+$.get() 方法
+	通过远程 HTTP GET请求载入信息。语法如下：
+语法：$.get(url, [data], [callback], [type])
+	1，url：请求HTML页面的URL地址。
+	2，data：发送给服务器的 key/value 的数据作为字符串附加到请求URL中
+	3，callback：载入成功时回调函数
+	4，type：服务器返回内容的格式，包括 xml，html，script，json，text 等
+
+	$.get() 方法的回调函数只有两个参数，代码如下：
+	function(data, textStatus){
+		//  data：返回的内容，可以是xml文件，json文件，html片段等。
+		//  textStatus：请求状态：success，error，timeout等。
+	}    
+							    
+
+#### $.ajax()方法
+
+$.ajax() 方法
+
+$.ajax() 方法是 jQuery 最底层的 Ajax 实现。前面所讲的哪些操作
+ajax的方法都是基于 $.ajax() 方法构建的，因此此方法可以替换前面
+的所有方法。语法如下：
+
+语法： $.ajax(url, [settings] )
+	1，url：发送请求地址。
+	2，settings：ajax请求参数设置，所有选项都是可选的。
+
+
+	$.ajax() 常用的请求参数：
+	type：设置请求方式，主要有 GET 和 POST，默认是GET
+	timeout：设置请求超时时间
+	data：发送到服务器的数据
+	dataType：预期服务器返回的数据类型，比如：xml，json，test 等。
+
+	beforeSend：发送请求前可以修改 XMLHttpRequest 对象的函数，例如添加自定义HTTP头信息等
+	complete：   设置完成后调用该的回调函数，请求失败均会调用
+	success：请求成功后调用的回调函数
+	error：请求失败后被调用的函数
+	global：默认为true，表示是否触发全局 ajax事件
+
+	提示：如果需要使用 $.ajax() 方法来进行 Ajax 开发，那么上面
+	这些常用的参数都必须了解。jQuery 的内容比较多，有些知识
+	我们还得通过官方的 api 来进行巩固学习。
+
+
+#### example1
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>$.ajax()</title>        
+<script type="text/javascript" src="scripts/jquery-2.1.0.js"></script>
+<script type="text/javascript">
+$(function(){
+		$("input:eq(0)").click(function() {
+				$.ajax({
+						url："GetJsonServlet"，
+						type："get"，
+						dataType："json"，
+						success：function(data) {
+						var students = data.students ;
+						var res = "<ul>\n" ;
+						for (var i=0; i<students.length; i++) {
+						var student = students[i] ;
+						res += "<li>" + student.name + "---" + student.password + "</li>\n" ;                                                        
+						}
+						res += "</ul>" ;
+						$(res).appendTo($("#content")) ;
+						} ,
+						error：function(data) {
+						alert("失败啦！") ;
+						} ,
+						complete：function(XMLHttpRequest, textStatus) {
+						alert(XMLHttpRequest.status) ;
+						}
+						})；
+		})；
+})；
+</script>
+</head>
+
+<body>
+<input type="button" value="$.ajax()"/><br/>
+<div id="content"></div>        
+</body>
+</html>
+
+```
