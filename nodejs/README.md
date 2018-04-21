@@ -23,3 +23,25 @@ Javascript 语言的一个特点就是只支持单线程. V8 Javascript 脚本�
 #### Node.js 适合开发哪类应用程序
 
 
+
+
+#### 使用 nginx + nodejs 搭建web服务
+
+```nginx
+server {
+	listen       9999;
+	server_name  markdown;
+	charset utf-8;
+	access_log logs/host_access.log;
+
+	location / {
+		root   markdown;
+		index  index index.html index.htm index.php index.md default.html default.htm default.php;
+	}
+
+	location /app {
+		proxy_pass http://127.0.0.1:1234
+	}
+}
+
+```
