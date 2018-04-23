@@ -1,0 +1,15 @@
+php-pdo-5.3.3-46.el6_6.x86_64
+php-odbc-5.3.3-46.el6_6.x86_64
+php-mysql-5.3.3-46.el6_6.x86_64
+php-cli-5.3.3-46.el6_6.x86_64
+php-5.3.3-46.el6_6.x86_64
+php-gd-5.3.3-46.el6_6.x86_64
+php-tidy-5.3.3-46.el6_6.x86_64
+php-xml-5.3.3-46.el6_6.x86_64
+php-imap-5.3.3-46.el6_6.x86_64
+php-soap-5.3.3-46.el6_6.x86_64
+php-bcmath-5.3.3-46.el6_6.x86_64
+php-common-5.3.3-46.el6_6.x86_64
+php-devel-5.3.3-46.el6_6.x86_64
+php-mcrypt-5.3.3-4.el6.x86_64
+php-mbstring-5.3.3-46.el6_6.x86_64

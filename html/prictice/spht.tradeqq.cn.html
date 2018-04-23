@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <script type="text/javascript" src="//res.hitrader.com/hitrader2.2.2/scripts/jquery-1.11.2.min.js?v=2.8.01489406217"></script>
+        <script type="text/javascript" src="http://www.tradeqq.com/Public/Js/jplay.js?vjs=20170412"></script>
+        <script type="text/javascript" src="http://www.tradeqq.com/Public/Js/language.js?vjs=20170412"></script>
+        <script type="text/javascript" src="http://www.tradeqq.com/Public/Js/ds.js"></script>
+        <script type="text/javascript" src="http://www.tradeqq.com/Public/Js/getImg.js?vjs=20170412"></script>
+        <script type="text/javascript" src="http://www.tradeqq.com/Public/Js/tanchucen.js?vjs=20170412"></script>
+        <script type="text/javascript" src="http://www.tradeqq.com/Public/Js/WdatePicker.js?vjs=20170412"></script>
+        <script type="text/javascript" src="http://www.tradeqq.com/Public/Js/jquery.mousewheel.js?vjs=20170412"></script>
+        <script type="text/javascript" src="http://www.tradeqq.com/Public/Js/perfect-scrollbar.js?vjs=20170412"></script>
+        <script type="text/javascript" src="http://www.tradeqq.com/Public/Js/jquery.colorbox.js?vjs=20170412"></script>
+        <script type="text/javascript" src="http://www.tradeqq.com/Public/Js/socket.io.js?vjs=20170412"></script>
+        <script type="text/javascript" src="http://www.tradeqq.com/Public/Js/swfobject.js"></script>
+        <script type="text/javascript" src="http://www.tradeqq.com/Public/Js/setCookie.js"></script>
+        <script type="text/javascript" src="http://www.tradeqq.com/Public/Js/qt.js?vjs=20170412"></script>
+        
+        <script type="text/javascript">
+            var banben = "forexqq";
+            
+            if(banben=='zh-cn'){
+            	// 获取中文新闻快讯
+            	var Arr = [
+            		"http://www.tradeqq.com.cn:6265",
+            		"http://www.tradeqq.com.cn:6266",
+            		"http://www.tradeqq.com.cn:6267",
+            		"http://www.tradeqq.com.cn:6268",
+            		"http://www.tradeqq.com.cn:6269"
+            	];
+            }else if(banben=='zh-tw'){
+            	// 获取繁体新闻快讯
+            	var Arr = [
+            		"http://47.89.2.240:4865",
+            		"http://47.89.2.240:4866",
+            		"http://47.89.2.240:4867",
+            		"http://47.89.2.240:4868",
+            		"http://47.89.2.240:4869"
+            	];
+            }else if(banben=='fr-fr'){
+            	var Arr = [
+            		"http://47.90.38.220:8821",
+            		"http://47.90.38.220:8822",
+            		"http://47.90.38.220:8823",
+            		"http://47.90.38.220:8824"
+            	];
+			}else if(banben=='zh-spht'){
+				var Arr = [
+					"http://spht.tradeqq.cn:8885",
+					"http://spht.tradeqq.cn:8886",
+					"http://spht.tradeqq.cn:8887",
+					"http://spht.tradeqq.cn:8888",
+					"http://spht.tradeqq.cn:8889",
+					"http://spht.tradeqq.cn:20000",
+					"http://spht.tradeqq.cn:20001",
+					"http://spht.tradeqq.cn:20002",
+					"http://spht.tradeqq.cn:20003",
+					"http://spht.tradeqq.cn:20004",
+					"http://spht.tradeqq.cn:20100",
+					"http://spht.tradeqq.cn:20200",
+					"http://spht.tradeqq.cn:20300",
+					"http://spht.tradeqq.cn:20400",
+					"http://spht.tradeqq.cn:20500",
+					"http://spht.tradeqq.cn:20600",
+					"http://spht.tradeqq.cn:20700",
+					"http://spht.tradeqq.cn:20800",
+					"http://spht.tradeqq.cn:20900",
+					"http://spht.tradeqq.cn:21000"
+				];
+			}else if(banben=='forexqq'){
+				// forexqq 行情数据
+				var Arr = [
+					"http://q.forexqq.cn:9168",
+					"http://q.forexqq.cn:9167",
+					"http://q.forexqq.cn:9169"
+				];
+            }else{
+            	var Arr = [
+            		"http://47.89.2.44:7266",
+            		"http://47.89.2.44:7267",
+            		"http://47.89.2.44:7268",
+            		"http://47.89.2.44:7269"
+            	];
+            }
+
+            var n = Math.floor(Math.random()*Arr.length+1)-1
+            var server = Arr[n];
+            var socket = io.connect(server);
+            socket.on('pushToWebClient',function(data){
+            	console.log(data);
+            });
+            
+        </script>
+
+    </head>
+<body>
+<div id="banbanben" value="zh-cn">哈哈</div>
+</body>
+<html>

@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<script type="text/javascript" src="//res.hitrader.com/hitrader2.2.2/scripts/jquery-1.11.2.min.js?v=2.8.01489406217"></script>
+		<script type="text/javascript" src="//res.hitrader.com/hitrader2.2.2/scripts/colorbox/jquery.colorbox-min.js?v=2.8.01489406217"></script>
+		<script type="text/javascript" src="//res.hitrader.com/hitrader2.2.2/scripts/highcharts/highstock.js?v=2.8.01489406217"></script>
+		<script type="text/javascript" src="//res.hitrader.com/hitrader2.2.2/scripts/cloud.js?v=2.8.01489406217"></script>
+		<script type="text/javascript" src="//res.hitrader.com/hitrader2.2.2/scripts/jquery.qtip.js?v=2.8.01489406217"></script>
+		<script type="text/javascript" src="//res.hitrader.com/hitrader2.2.2/scripts/jquery-ui-dialog.min.js?v=2.8.01489406217"></script>
+		<script type="text/javascript" src="//res.hitrader.com/hitrader2.2.2/scripts/Validform_v5.3.2_min.js?v=2.8.01489406217"></script>
+		<script type="text/javascript" src="//res.hitrader.com/hitrader2.2.2/scripts/lang/zh.js?v=2.8.01489406217"></script>
+		<script type="text/javascript" src="//res.hitrader.com/hitrader2.2.2/scripts/hitrader.js?v=2.8.01489406217"></script>
+		<script type="text/javascript" src="//res.hitrader.com/hitrader2.2.2/scripts/hitrader.track.js?v=2.8.01489406217"></script>
+		<script type="text/javascript" src="//res.hitrader.com/hitrader2.2.2/scripts/lang/chart_zh.js?v=2.8.01489406217"></script>
+		<script type="text/javascript" src="//res.hitrader.com/hitrader2.2.2/scripts/socket.io.js?v=2.8.01489406217"></script>
+		<script type="text/javascript">
+			var socket = io.connect("10.203.206.250"+":20000");
+			socket.emit('message');
+			socket.on('pushToWebClient',function(msg){
+				console.log(msg);
+			});
+		</script>
+	</head>
+	<body>
+		<div id="data"></div>
+	</body>
+<html>

@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    window.onload = function(){
+    	var url = "http://10.203.206.235:10070/";
+    	var data = {'email': 'zhangyz@tradeqq.com'};
+    	var xmlHttp;
+    	if(window.ActiveXObject){
+    		xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+    	}else{
+    		xmlHttp = new XMLHttpRequest();
+    	}
+    	xmlHttp.open("post", url);
+    	xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		var strData = JSON.stringify(data);
+		console.log(strData);
+		console.log(typeof strData);
+    	xmlHttp.send(strData);
+    	xmlHttp.onreadystatechange = function(){
+    		if(xmlHttp.readyState == 4){
+    			if(xmlHttp.status == 200){
+    				console.log("发送成功")
+    				console.log("接收到的数据" + xmlHttp.responseText);
+    			}
+    		}
+    	}
+    }
+</script>
