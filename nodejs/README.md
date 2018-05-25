@@ -1,5 +1,7 @@
 # nodejs
 
+<br>
+
 在linux环境中安装nodejs解释器
 ```shell
 [root@zhangyz ~]# tar -xf node-v0.10.26.tar.gz -C /usr/src
