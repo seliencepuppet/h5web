@@ -72,7 +72,7 @@ Javascript 语言的一个特点就是只支持单线程. V8 Javascript 脚本�
 
 
 
-#### 使用 nginx + nodejs 搭建web服务
+#### 使用 nginx + Node.js 搭建web服务
 
 ```nginx
 server {
