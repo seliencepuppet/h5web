@@ -14,4 +14,4 @@ ip地址后面加上 “/?id=123456” 这个就是携带的参数
 
 ![browser](pic/03.png)
 
-
+![browser](pic/04.png)
