@@ -43,3 +43,26 @@ conn.on('ready',function(){
     }); 
 }); 
 ```
+
+//rabbitmq连接并接收消息
+```javascript
+var rabbitMQ = require('amqp').createConnection({ 
+    host: '192.168.1.1', 
+    port: '5672', 
+    login: 'guest', 
+    password: 'guest'
+});
+
+rabbitMQ.on('ready', function() {
+    rabbitMQ.queue('queuetest', { autoDelete: false, durable: true, exclusive: false }, function(queue) {
+        queue.bind('ExCeshi.Dir','test');
+        console.log('Queue ' + queue.name + ' is open!');
+        queue.subscribe(function (message) {
+            if(message.data){
+                var json = eval('(' + message.data.toString() + ')'); 
+                console.log(json);  
+            }   
+        }); 
+    }); 
+});
+```
