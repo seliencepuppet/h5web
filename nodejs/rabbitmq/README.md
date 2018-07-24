@@ -26,6 +26,7 @@ var conn = amqp.createConnection({
     }   
 }); 
 
+
 //rabbitmq连接并发送消息
 var n = 100;
 conn.on('ready',function(){
@@ -44,7 +45,8 @@ conn.on('ready',function(){
 }); 
 ```
 
-//rabbitmq连接并接收消息
+rabbitmq连接并接收消息
+
 ```javascript
 var rabbitMQ = require('amqp').createConnection({ 
     host: '192.168.1.1', 
