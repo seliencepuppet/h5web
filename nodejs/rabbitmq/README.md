@@ -41,9 +41,13 @@ conn.on('ready',function(){
         now = new Date();
         mill = now.getMilliseconds();
         console.log(now,mill);
+        
+        conn.end();
+        conn.destroy();
     }); 
 }); 
 ```
+
 
 rabbitmq连接并接收消息
 
