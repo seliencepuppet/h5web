@@ -26,11 +26,17 @@ var conn = amqp.createConnection({
     }   
 }); 
 
+var exchangeType = { 
+    type: 'direct', 
+    durable: true, 
+    autoDelete: false, 
+    confirm: false 
+};
 
 //rabbitmq连接并发送消息
 var n = 100;
 conn.on('ready',function(){
-    conn.exchange(exchName,{ type: 'direct', durable: true, autoDelete: false, confirm: false },function(exchange){
+    conn.exchange(exchName, exchangeType, function(exchange){
         now = new Date();
         mill = now.getMilliseconds();
         console.log(now,mill);
