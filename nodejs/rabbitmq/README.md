@@ -65,8 +65,14 @@ var rabbitMQ = require('amqp').createConnection({
     password: 'guest'
 });
 
+var queueType = { 
+    autoDelete: false, 
+    durable: true, 
+    exclusive: false 
+};
+
 rabbitMQ.on('ready', function() {
-    rabbitMQ.queue('queuetest', { autoDelete: false, durable: true, exclusive: false }, function(queue) {
+    rabbitMQ.queue('queuetest', queueType, function(queue) {
         queue.bind('ExCeshi.Dir','test');
         console.log('Queue ' + queue.name + ' is open!');
         queue.subscribe(function (message) {
