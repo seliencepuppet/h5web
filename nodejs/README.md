@@ -107,3 +107,51 @@ server {
 * koa超前: 正在完善中
 * Hapi: 复杂(一个简单的Hello, world都要做很多堆砌), 适合复杂的大型项目
 
+
+使用node解释器开展一个项目首先要做的第一件事就是在目录里面对其进行初始化操作
+
+```shell
+[root@zhangyz test01]# /usr/local/node-v0.10.26/bin/npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sane defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg> --save` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+name: (test01) 
+version: (0.0.0) 
+description: test
+entry point: (index.js) 
+test command: 
+git repository: 
+keywords: 
+author: zhangyz
+license: (ISC) 
+About to write to /usr/local/nodejs/test03/package.json:
+
+{
+  "name": "test01",
+  "version": "0.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zhangyz",
+  "license": "ISC"
+}
+
+Is this ok? (yes) yes
+[root@zhangyz test01]# 
+[root@zhangyz test01]# 
+[root@zhangyz test01]# ls
+package.json
+[root@zhangyz test01]# 
+[root@zhangyz test01]# ll
+total 4
+-rw-r--r-- 1 root root 213 Oct  8 15:42 package.json
+```
