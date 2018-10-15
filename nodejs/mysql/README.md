@@ -51,5 +51,6 @@ npm WARN test@1.0.0 No repository field.
 + mysql@2.16.0
 added 11 packages from 15 contributors and audited 13 packages in 3.652s
 found 0 vulnerabilities
+[root@zhangyz test]# ls 
+node_modules  package.json  package-lock.json
 ```
-
