@@ -118,3 +118,19 @@ var queryres = {
 module.exports = queryres;
 ```
 
+main.js里面记录数据操作之后的结果
+
+```javascript
+var connection = require("./dbconnection");
+
+function main(){
+    var sql = "select * from t_user order by id desc";
+    connection.selectRes(sql, null, function(result){
+        var data = result['dbres'];
+        var single = JSON.stringify(data[0]);
+        console.log(typeof single);
+    });
+}
+
+main();
+```
