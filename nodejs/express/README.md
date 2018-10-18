@@ -49,3 +49,21 @@ npm WARN express01@1.0.0 No repository field.
 added 48 packages from 36 contributors and audited 121 packages in 1.485s
 found 0 vulnerabilities
 ```
+
+使用以下代码引用express的模块
+
+```javascript
+var express = require('express');
+var app = express();
+
+app.get('/', function(req, res){
+    res.send('hello world!');
+});
+
+app.listen(30000);
+```
+
+现在在浏览器上输入 http://192.168.1.1:30000 就可以看到访问的结果返回了hello world!的内容.
+
+
+
