@@ -98,4 +98,50 @@ transporter.sendMail(mailOptions, function(error, info){
 });
 ```
 
+发送邮件成功以后很少会有操作，但也有极少数情况需要在成功以后会处理一些特殊信息的.
+
+还可以使用另外一个smtp邮件的传输插件来进行邮件的发送 nodemailer-smtp-transport
+
+```shell
+[root@zhangyz nodemailer01]# /usr/local/node-v8.9.2/bin/npm install nodemailer-smtp-transport  --save
+npm WARN nodemailer01@1.0.0 No description
+npm WARN nodemailer01@1.0.0 No repository field.
+
++ nodemailer-smtp-transport@2.7.4
+updated 1 package and audited 11 packages in 11.237s
+found 0 vulnerabilities
+```
+
+接下来是示例代码:
+
+```javascript
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
+var smtpConfig = smtpTransport({
+    host: 'smtp.qq.com', 
+    port: 465, 
+    secureConnection: true, 
+    auth: {
+        user: 'xxxxxx@qq.com', 
+        pass: '123456'
+    }
+});
+
+var transport = nodemailer.createTransport(smtpConfig);
+var mailOptions = {
+    from: 'xxxxxx@qq.com',
+    to: 'xxxxxx@163.com',
+    subject: 'hello world!!!',
+    text: 'hello world!!!!!!!!!!!!!',
+    html: '<b>Hello world?</b>'
+};
+
+transport.sendMail(mailOptions, function(error, response){
+    if(error){
+        console.log(error)
+    }else{
+        console.log(response);
+    }
+});
+```
 
