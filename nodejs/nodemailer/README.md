@@ -56,3 +56,15 @@ added 1 package from 1 contributor and audited 1 package in 2.279s
 found 0 vulnerabilities
 ```
 
+nodemailer模块的支持如下:
+
+* 使用Unicode编码
+* 支持Windows系统，不需要安装依赖
+* 支持纯文本和HTML格式
+* 支持发送附件(包括大型附件)
+* 在HTML中嵌入图片
+* 支持SSL/STARTTLS安全协议
+* 不同的传输方法，可以使用内置也可以使用外部插件的形式
+* 提供自定义插件支持(比如增加DKIM签名，使用markdown代替HTML等等)
+* 支持XOAUTH2登录验证(以及关于更新的令牌反馈)
+
