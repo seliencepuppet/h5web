@@ -68,3 +68,34 @@ nodemailer模块的支持如下:
 * 提供自定义插件支持(比如增加DKIM签名，使用markdown代替HTML等等)
 * 支持XOAUTH2登录验证(以及关于更新的令牌反馈)
 
+以下是一段示例代码发送邮件
+
+```javascript
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport({
+    service: 'qq',
+    port: 465,
+    secureConnection: true,
+    auth: {
+        user: 'xxxxxx@qq.com',
+        pass: '123456'
+    }
+});
+
+var mailOptions = {
+    from: 'xxxxxx@qq.com',
+    to: 'xxxxxx@163.com',
+    subject: 'hello world!!!',
+    text: 'hello world!!!!!!!!!!!!!',
+    html: '<b>Hello world?</b>'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+        return console.log(error);
+    }
+    console.log('Message sent: ' + info.response);
+});
+```
+
+
