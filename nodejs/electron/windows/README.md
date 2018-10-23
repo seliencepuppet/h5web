@@ -25,3 +25,10 @@ G:\nodeproject\electron>electron
 接下来会打开一个electrno的界面
 
 ![electron](pic/1.png)
+
+开发一个electron桌面应用
+
+1) package.json: 用于配置Electron工程的
+2) index.js: 相当于Electron桌面应用的入口
+3) index.html: 用于主窗口UI的页面文件
+
