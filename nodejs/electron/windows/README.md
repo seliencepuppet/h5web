@@ -18,4 +18,10 @@ added 144 packages in 283.193s
    │     Run npm i -g npm to update      │
    │                                     │
    ╰─────────────────────────────────────╯
+G:\nodeproject\electron>electron
+
 ```
+
+接下来会打开一个electrno的界面
+
+![electron](pic/1.png)
