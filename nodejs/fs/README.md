@@ -78,3 +78,12 @@ hello world!!!
 
 这里要注意的是：读取文件一定要设置编码，否则默认是 ”buffer“ 形式出现。
 
+删除文件的用法
+
+```javascript
+var fs = require('fs');
+
+fs.unlink('aa.txt', function(){
+    console.log("delete success");
+});
+```
