@@ -52,3 +52,26 @@ found 0 vulnerabilities
 node_modules  package.json  package-lock.json
 ```
 
+使用fs模块对文件的内容进行读取
+
+```javascript
+var fs = require('fs');
+fs.readFile("bb.txt", "utf8", function(error, data){
+    if(error){
+        throw error;
+    }
+
+    arr = data.split();
+    console.log("取出的数据转换成为数组之后的内容为: ");
+    console.log(arr);
+    console.log("\n");
+    for(var i in arr){
+        console.log(arr[i].replace("\n",""));
+    }
+});
+
+取出的数据转换成为数组之后的内容为: 
+[ 'hello world!!!\n' ]
+
+hello world!!!
+```
