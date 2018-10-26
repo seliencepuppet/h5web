@@ -75,3 +75,6 @@ fs.readFile("bb.txt", "utf8", function(error, data){
 
 hello world!!!
 ```
+
+这里要注意的是：读取文件一定要设置编码，否则默认是 ”buffer“ 形式出现。
+
