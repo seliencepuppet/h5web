@@ -1,3 +1,4 @@
+安装fs模块，并对其作用法进行测试
 
 ```shell
 [root@zhangyz ~]# mkdir fs01
